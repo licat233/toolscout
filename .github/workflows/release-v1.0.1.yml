@@ -1,0 +1,88 @@
+name: Release ToolScout v1.0.1
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/release-v1.0.1.yml
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-14
+    steps:
+      - name: Checkout release target
+        uses: actions/checkout@v4
+        with:
+          ref: 26203c346aa54a0f418ad6e9ed8ae79f4b73f041
+
+      - name: Install Rust 1.98.0 targets
+        run: |
+          rustup toolchain install 1.98.0 --profile minimal --component rustfmt --component clippy
+          rustup default 1.98.0
+          rustup target add aarch64-apple-darwin x86_64-apple-darwin
+
+      - name: Validate
+        run: |
+          cargo fmt --check
+          cargo test --workspace
+          cargo clippy --workspace --all-targets -- -D warnings
+
+      - name: Build release assets
+        run: |
+          set -e
+          cargo build --release --target aarch64-apple-darwin
+          cargo build --release --target x86_64-apple-darwin
+          mkdir -p dist
+          cp target/aarch64-apple-darwin/release/toolscout dist/toolscout-aarch64
+          cp target/x86_64-apple-darwin/release/toolscout dist/toolscout-x86_64
+          lipo -create dist/toolscout-aarch64 dist/toolscout-x86_64 -output dist/toolscout-universal
+          chmod +x dist/toolscout-*
+          file dist/toolscout-*
+          dist/toolscout-x86_64 --version
+          cd dist
+          tar -czf toolscout-aarch64-apple-darwin.tar.gz toolscout-aarch64
+          tar -czf toolscout-x86_64-apple-darwin.tar.gz toolscout-x86_64
+          tar -czf toolscout-universal-apple-darwin.tar.gz toolscout-universal
+          shasum -a 256 toolscout-*-apple-darwin.tar.gz > SHA256SUMS
+
+      - name: Write release notes
+        run: |
+          cat > release-notes.md <<'EOF'
+          ## ToolScout v1.0.1
+
+          Patch release focused on more precise agent activation and cleaner integration boundaries.
+
+          ### Fixes
+
+          - Tightens ToolScout skill relevance to the pre-code/pre-install gate.
+          - Explicitly states that terminal or basic shell use by itself is not a ToolScout trigger.
+          - Excludes ordinary chat, planning, reflection, Memory/Skill/Ledger persistence, review, and inspection.
+          - Aligns Hermes, Claude Code, and Codex integration guidance.
+          - Generalizes tool-memory governance so it does not become a second enterprise knowledge/history authority.
+
+          ### Validation
+
+          - cargo fmt --check
+          - 14/14 workspace tests
+          - cargo clippy --workspace --all-targets -- -D warnings
+          - Apple Silicon, Intel, and Universal macOS builds
+          - Standalone embedded-registry validation performed during release preparation
+          EOF
+
+      - name: Publish v1.0.1
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create v1.0.1 \
+            --repo ${{ github.repository }} \
+            --target 26203c346aa54a0f418ad6e9ed8ae79f4b73f041 \
+            --title 'ToolScout v1.0.1' \
+            --notes-file release-notes.md \
+            dist/toolscout-aarch64-apple-darwin.tar.gz \
+            dist/toolscout-x86_64-apple-darwin.tar.gz \
+            dist/toolscout-universal-apple-darwin.tar.gz \
+            dist/SHA256SUMS
