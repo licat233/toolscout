@@ -86,7 +86,7 @@ tool-memory stores tool availability, verified command recipes, failed attempts,
 blocked command patterns, and environment-specific operational notes.
 
 It is **not** current truth. It is **not** user-approved long-term memory. It is **not**
-a replacement for Vault governance. It must **not** be promoted into high-authority
+a replacement for governed enterprise knowledge/history authorities. It must **not** be promoted into high-authority
 memory automatically.
 
 All agents (Codex, Claude Code, Hermes) share one canonical runtime tool-memory home.
@@ -144,7 +144,7 @@ See `references/tool-memory-format.md` for the full record schema.
 
 Rules:
 - Agents may share tool-memory.
-- Agents may **not** create private tool-memory or Vault-specific homes during
+- Agents may **not** create private tool-memory or alternate authority-specific homes during
   normal installation.
 - Agents may **not** treat tool-memory as current truth.
 - Agents may **not** use another agent's execution record as approved SOP.
@@ -232,12 +232,10 @@ If writing code, state the reason briefly: "Existing tools do not fit because ..
 - Do not blindly scan the entire filesystem (`find /`, `find ~`).
 - Do not create private tool-memory when `TOOLSCOUT_MEMORY_HOME` exists.
 - Do not write LLM guesses as `verified_success` tool-memory.
-- Do not treat tool-memory as Vault current truth.
-- Do not automatically write tool-memory into high-authority Vault directories
-  (`01-Facts/`, `02-Rules/`, `03-Insights/`, `05-Truth/`).
-- Do not default-create `02-Rules/Tool-Inventory`.
-- Do not copy the full SKILL.md into a Vault rule directory to form a second
-  rule source.
+- Do not treat tool-memory as enterprise knowledge or history authority.
+- Do not automatically promote tool-memory into WeKnora or EAO Ledger.
+- Do not create a second high-authority tool inventory or copy the full SKILL.md
+  into another governance store.
 - Do not write hallucinated or guessed tool-memory records.
 - Only write tool-memory records after actual detection or execution.
 
