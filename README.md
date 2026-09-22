@@ -107,7 +107,7 @@ Before incidental code reimplements a commodity operation → Run `toolscout adv
 
 ```bash
 # Download pre-built binary (macOS, no Rust required)
-curl -sL https://github.com/licat233/toolscout/releases/download/v1.0.0/toolscout-universal-apple-darwin.tar.gz | tar xz
+curl -sL https://github.com/licat233/toolscout/releases/download/v1.0.1/toolscout-universal-apple-darwin.tar.gz | tar xz
 mv toolscout-universal /usr/local/bin/toolscout
 
 # Initialize memory home once, then verify
@@ -251,7 +251,7 @@ Repository:
 https://github.com/licat233/toolscout
 
 Current release:
-v1.0.0
+v1.0.1
 
 Supported agents:
 - Codex
@@ -303,7 +303,7 @@ Detect the platform:
 For macOS, prefer the universal binary unless the user explicitly wants a
 single-architecture binary:
 
-  curl -sL https://github.com/licat233/toolscout/releases/download/v1.0.0/toolscout-universal-apple-darwin.tar.gz | tar xz
+  curl -sL https://github.com/licat233/toolscout/releases/download/v1.0.1/toolscout-universal-apple-darwin.tar.gz | tar xz
   chmod +x toolscout-universal
 
 Install it as `toolscout`.
@@ -331,11 +331,11 @@ Optional single-architecture downloads:
 
 Apple Silicon only:
 
-  curl -sL https://github.com/licat233/toolscout/releases/download/v1.0.0/toolscout-aarch64-apple-darwin.tar.gz | tar xz
+  curl -sL https://github.com/licat233/toolscout/releases/download/v1.0.1/toolscout-aarch64-apple-darwin.tar.gz | tar xz
 
 Intel only:
 
-  curl -sL https://github.com/licat233/toolscout/releases/download/v1.0.0/toolscout-x86_64-apple-darwin.tar.gz | tar xz
+  curl -sL https://github.com/licat233/toolscout/releases/download/v1.0.1/toolscout-x86_64-apple-darwin.tar.gz | tar xz
 
 If no prebuilt binary matches the platform, build from source:
 
@@ -639,7 +639,7 @@ AI 助手经常在 `pandoc`、`jq`、`ffmpeg`、`magick` 等工具一条命令�
 
 ```bash
 # 下载预编译二进制（macOS，无需 Rust 环境）
-curl -sL https://github.com/licat233/toolscout/releases/download/v1.0.0/toolscout-universal-apple-darwin.tar.gz | tar xz
+curl -sL https://github.com/licat233/toolscout/releases/download/v1.0.1/toolscout-universal-apple-darwin.tar.gz | tar xz
 mv toolscout-universal /usr/local/bin/toolscout
 
 # 初始化 memory home 一次，然后验证
