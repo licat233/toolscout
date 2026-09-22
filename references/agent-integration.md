@@ -74,7 +74,8 @@ Add the ToolScout Rule to your Codex agent configuration:
 
 Do not invoke toolscout at task start. Invoke it only immediately before
 writing incidental code that would reimplement a commodity local operation, or
-before installing a dependency for that operation.
+before installing a dependency for that operation. Using terminal or another
+basic shell tool by itself is not a trigger.
 
 Do not run it for ordinary software development, conversation, explanations,
 planning, code reading/review, repository inspection, or an already-selected tool.
