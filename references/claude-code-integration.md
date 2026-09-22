@@ -12,8 +12,9 @@ override.
 
 Do not invoke toolscout at task start. Invoke it only immediately before
 writing incidental code that would reimplement a commodity local operation, or
-before installing a dependency for that operation. Ordinary software
-development does not trigger this rule.
+before installing a dependency for that operation. Using terminal or another
+basic shell tool by itself is not a trigger. Ordinary software development does
+not trigger this rule.
 
 1. For an in-scope operation run:
    `toolscout advise --task "<operation>" --intent avoid_custom_code --category <category> --json`
