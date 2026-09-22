@@ -1,11 +1,10 @@
 ---
 name: toolscout
 description: |
-  Use this skill before writing custom scripts, installing tools, or performing
-  file/data transformation, format conversion, extraction, batch processing, or
-  other command-line work that may already have a local tool. Do not use it for
-  ordinary conversation, explanations, code reading, or simple repository
-  inspection.
+  Relevant ONLY immediately before writing incidental custom code for a
+  commodity local operation, or installing a utility/dependency for it.
+  Using terminal by itself is not a trigger. Not relevant to chat, planning,
+  reflection, Memory/Skill/Ledger persistence, review, or inspection.
 ---
 
 # ToolScout
