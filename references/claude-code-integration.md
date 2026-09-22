@@ -28,9 +28,9 @@ not trigger this rule.
 
 If writing code, briefly state why: "No existing tool fits because …"
 
-tool-memory is shared runtime infrastructure, not authoritative Vault memory.
+tool-memory is shared runtime infrastructure, not authoritative enterprise knowledge or history.
 Do not create private tool-memory when TOOLSCOUT_MEMORY_HOME exists.
-Do not default-create 02-Rules/Tool-Inventory.
+Do not create a second high-authority tool inventory.
 SKILL.md is the sole execution rule source.
 ```
 
