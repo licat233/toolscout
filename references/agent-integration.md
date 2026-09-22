@@ -15,11 +15,11 @@ All agents must:
 1. Use the default shared file-based runtime tool-memory home:
    `~/.config/toolscout/tool-memory`.
 2. Treat `TOOLSCOUT_MEMORY_HOME` as an optional explicit override only.
-3. Not create private, agent-specific, Obsidian-specific, or Vault-specific
+3. Not create private, agent-specific, or alternate authority-specific
    tool-memory during normal installation.
-4. Not treat tool-memory as authoritative Vault memory.
-5. Not default-create `02-Rules/Tool-Inventory`.
-6. Not copy full SKILL.md to a Vault rule directory.
+4. Not treat tool-memory as authoritative enterprise knowledge or history.
+5. Not create a second high-authority tool inventory.
+6. Not copy full SKILL.md into another governance store.
 
 Every record written by an agent must include `source_agent` identifying
 which agent wrote it.
@@ -92,7 +92,7 @@ planning, code reading/review, repository inspection, or an already-selected too
 
 If writing code, briefly state why: "No existing tool fits because …"
 
-tool-memory is shared runtime infrastructure, not authoritative Vault memory.
+tool-memory is shared runtime infrastructure, not authoritative enterprise knowledge or history.
 Do not create private tool-memory when TOOLSCOUT_MEMORY_HOME exists.
 SKILL.md is the sole execution rule source.
 ```
