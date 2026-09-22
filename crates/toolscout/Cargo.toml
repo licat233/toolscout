@@ -1,6 +1,6 @@
 [package]
 name = "toolscout"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 description = "Fast local runtime core for ToolScout — CLI + MCP for shared file-based tool-memory, registry query, and tool detection."
 license = "MIT"
